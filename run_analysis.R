@@ -8,7 +8,8 @@
 
 # 0. Preparatory steps
 # -------------------------
-# install.packages("dplyr")
+install.packages("dplyr")
+library(dplyr)
 # Create dir
 if (!file.exists("./Data")) 
 {
@@ -98,4 +99,6 @@ colnames(mean_std_data)<-readable_names
 #5. create a second, independent tidy data set with the average of each variable for each activity and each subject
 #-------------------------------------------------------------------
 tidy_data<-summarise_each(group_by(mean_std_data,Subject.ID, Activity), funs(mean))
+
+
 write.table(tidy_data, file="tidy_data.txt", row.name=FALSE)
